@@ -47,7 +47,14 @@ class SessionDeleteView(LoginRequiredMixin, SessionMixin, DeleteView):
             logout(request)
             next_page = getattr(settings, 'LOGOUT_REDIRECT_URL', '/')
             return redirect(resolve_url(next_page))
-        return super(SessionDeleteView, self).delete(request, *args, **kwargs)
+        return super().delete(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        if self.kwargs['pk'] == self.request.session.session_key:
+            logout(self.request)
+            next_page = getattr(settings, 'LOGOUT_REDIRECT_URL', '/')
+            return redirect(resolve_url(next_page))
+        return super().form_valid(form)
 
     def get_success_url(self):
         return str(reverse_lazy('user_sessions:session_list'))
