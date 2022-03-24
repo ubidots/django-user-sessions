@@ -35,3 +35,7 @@ tx-pull:
 tx-push:
 	cd user_sessions; django-admin.py makemessages -l en
 	tx push -s
+
+
+build:
+	python3 -m build
