@@ -36,6 +36,8 @@ tx-push:
 	cd user_sessions; django-admin.py makemessages -l en
 	tx push -s
 
-
 build:
-	python3 -m build
+	python -m build
+
+publish: build
+	python -m twine upload --repository ubidots dist/*
