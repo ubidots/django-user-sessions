@@ -36,6 +36,11 @@ tx-push:
 	cd user_sessions; django-admin.py makemessages -l en
 	tx push -s
 
+install_build_dependencies:
+	python -m pip install --upgrade pip
+	python -m pip install --upgrade build
+	python -m pip install --upgrade twine
+
 build:
 	python -m build
 
