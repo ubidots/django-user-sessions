@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # Django User Sessions documentation build configuration file, created by
 # sphinx-quickstart on Wed Jan  8 00:00:33 2014.
@@ -13,7 +12,14 @@
 # serve to show the default.
 
 import os
+
 from pkg_resources import get_distribution
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.settings")
+
+import django  # noqa: E402
+
+django.setup()
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -45,8 +51,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Django User Sessions'
-copyright = u'2014, Bouke Haarsma'
+project = 'Django User Sessions'
+copyright = '2014, Bouke Haarsma'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -191,85 +197,14 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'DjangoUserSessionsdoc'
 
-
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-  ('index', 'DjangoUserSessions.tex', u'Django User Sessions Documentation',
-   u'Bouke Haarsma', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-#latex_logo = None
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
-
-# If true, show page references after internal links.
-#latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#latex_appendices = []
-
-# If false, no module index is generated.
-#latex_domain_indices = True
-
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'djangousersessions', u'Django User Sessions Documentation',
-     [u'Bouke Haarsma'], 1)
+    ('index', 'djangousersessions', 'Django User Sessions Documentation',
+     ['Bouke Haarsma'], 1)
 ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
-
-
-# -- Options for Texinfo output -------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'DjangoUserSessions', u'Django User Sessions Documentation',
-   u'Bouke Haarsma', 'DjangoUserSessions', 'One line description of project.',
-   'Miscellaneous'),
-]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
-
-# If true, do not generate a @detailmenu in the "Top" node's menu.
-#texinfo_no_detailmenu = False
-
-from django.conf import settings
-
-settings.configure(DEBUG=False)

@@ -1,12 +1,16 @@
 Release Notes
 =============
 
-Unreleased
+2.0.0
 ----------
-* New: Support for Django 3.0 and 3.1.
-* New: Support for Python 3.9.
+* New: Support for Django 3.2 and 4.0
+* Dropped Django <3.2 support.
+* New: Support for Python 3.9 and 3.10.
 * Moved CI to GitHub Actions.
-* Dropped Python 3.5 support.
+* Dropped support for Python 3.5 and 3.6.
+* Add detection for Chromium-based Edge browser
+* Rename OS X to macOS
+* Add detection for newere macOS versions
 
 1.7.0
 -----
@@ -40,7 +44,7 @@ Unreleased
 * Fixed #73 -- Error when deleting individual session from list view.
 * Fixed #74 -- user agent not being shown in list view.
 * Resolved Django’s deprecation warnings (preliminary Django 2.0 support).
-* Make templatetags return None instead of 'unknown', provide your own fallback 
+* Make templatetags return None instead of 'unknown', provide your own fallback
   value with `default_if_none:`.
 * Allow translation of fallback values.
 
@@ -48,7 +52,7 @@ Unreleased
 -----
 * Added Django Channels support.
 * Fixed #62 -- Provide request.user in signals.
-* Ending current session will logout instead, make sure LOGOUT_REDIRECT_URL is 
+* Ending current session will logout instead, make sure LOGOUT_REDIRECT_URL is
   set.
 
 1.3.1

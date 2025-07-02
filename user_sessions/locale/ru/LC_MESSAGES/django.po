@@ -1,149 +1,149 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Translators:
-# Bouke Haarsma <bouke@haarsma.eu>, 2017
-# elnappo <elnappoo@gmail.com>, 2014
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-user-sessions\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-19 07:30+0200\n"
-"PO-Revision-Date: 2017-08-03 14:58+0000\n"
-"Last-Translator: Bouke Haarsma <bouke@haarsma.eu>\n"
-"Language-Team: German (http://www.transifex.com/Bouke/django-user-sessions/language/de/)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:20
 msgid "Is Valid"
-msgstr "Gültig"
+msgstr "Действующий"
 
 #: admin.py:25
 msgid "Active"
-msgstr "Aktiv"
+msgstr "Активный"
 
 #: admin.py:26
 msgid "Expired"
-msgstr "Abgelaufen"
+msgstr "Истекший"
 
 #: admin.py:37
 msgid "Owner"
-msgstr "Besitzer"
+msgstr "Владелец"
 
 #: admin.py:42
 msgid "Self"
-msgstr "Meine"
+msgstr "Сам"
 
 #: models.py:37
 msgid "session key"
-msgstr "Sitzungsschlüssel"
+msgstr "ключ сессии"
 
 #: models.py:39
 msgid "session data"
-msgstr "Sitzungsdaten"
+msgstr "сессия"
 
 #: models.py:40
 msgid "expiry date"
-msgstr "Ablaufdatum"
+msgstr "дата истечения срока"
 
 #: models.py:44
 msgid "session"
-msgstr "Sitzung"
+msgstr "сессия"
 
 #: models.py:45
 msgid "sessions"
-msgstr "Sitzungen"
+msgstr "сессии"
 
 #: templates/user_sessions/session_list.html:5
 msgid "<em>unknown on unknown</em>"
-msgstr "<em>unbekannt</em>"
+msgstr "<em>неизвестный из неизвестных</em>"
 
 #: templates/user_sessions/session_list.html:6
-msgid "<em>unknown</em>"
-msgstr "<em>unbekannt</em>"
+msgid "<em>неизвестный</em>"
+msgstr ""
 
 #: templates/user_sessions/session_list.html:8
 msgid "Active Sessions"
-msgstr "Aktive Sitzungen"
+msgstr "Активные сессии"
 
 #: templates/user_sessions/session_list.html:13
 msgid "Location"
-msgstr "Ort"
+msgstr "Место расположения"
 
 #: templates/user_sessions/session_list.html:14
 msgid "Device"
-msgstr "Gerät"
+msgstr "Устройство"
 
 #: templates/user_sessions/session_list.html:15
 msgid "Last Activity"
-msgstr "Letzter Zugriff"
+msgstr "Последняя активность"
 
 #: templates/user_sessions/session_list.html:16
 #: templates/user_sessions/session_list.html:34
 #: templates/user_sessions/session_list.html:36
 msgid "End Session"
-msgstr "Sitzung beenden"
+msgstr "Конец сеанса"
 
 #: templates/user_sessions/session_list.html:25
 #, python-format
 msgid "%(time)s ago (this session)"
-msgstr "vor %(time)s (diese Sitzung)"
+msgstr "%(time)s назад (сессия)"
 
 #: templates/user_sessions/session_list.html:27
 #, python-format
 msgid "%(time)s ago"
-msgstr "vor %(time)s"
+msgstr "%(time)s назад"
 
 #: templates/user_sessions/session_list.html:47
 msgid ""
 "You can also end all other sessions but the current.\n"
 "        This will log you out on all other devices."
 msgstr ""
+"Вы также можете завершить все другие сеансы, кроме текущего.\n"
+"        Вы выйдете из системы на всех других устройствах.."
 
 #: templates/user_sessions/session_list.html:49
-msgid "End All Other Sessions"
+msgid "Завершить все остальные сеансы"
 msgstr ""
 
 #: templatetags/user_sessions.py:20
 msgid "Chrome"
-msgstr "Chrome"
+msgstr ""
 
 #: templatetags/user_sessions.py:21
 msgid "Safari"
-msgstr "Safari"
+msgstr ""
 
 #: templatetags/user_sessions.py:22
 msgid "Firefox"
-msgstr "Firefox"
+msgstr ""
 
 #: templatetags/user_sessions.py:23
 msgid "Opera"
-msgstr "Opera"
+msgstr ""
 
 #: templatetags/user_sessions.py:24
 msgid "Internet Explorer"
-msgstr "Internet Explorer"
+msgstr ""
 
 #: templatetags/user_sessions.py:27
 msgid "Android"
-msgstr "Android"
+msgstr ""
 
 #: templatetags/user_sessions.py:28
 msgid "Linux"
-msgstr "Linux"
+msgstr ""
 
 #: templatetags/user_sessions.py:29
 msgid "iPhone"
-msgstr "iPhone"
+msgstr ""
 
 #: templatetags/user_sessions.py:30
 msgid "iPad"
-msgstr "iPad"
+msgstr ""
 
 #: templatetags/user_sessions.py:31
 msgid "OS X Mavericks"
@@ -163,27 +163,27 @@ msgstr ""
 
 #: templatetags/user_sessions.py:35
 msgid "OS X"
-msgstr "OS X"
+msgstr ""
 
 #: templatetags/user_sessions.py:36
 msgid "Windows XP"
-msgstr "Windows XP"
+msgstr ""
 
 #: templatetags/user_sessions.py:37
 msgid "Windows Vista"
-msgstr "Windows Vista"
+msgstr ""
 
 #: templatetags/user_sessions.py:38
 msgid "Windows 7"
-msgstr "Windows 7"
+msgstr ""
 
 #: templatetags/user_sessions.py:39
 msgid "Windows 8"
-msgstr "Windows 8"
+msgstr ""
 
 #: templatetags/user_sessions.py:40
 msgid "Windows 8.1"
-msgstr "Windows 8.1"
+msgstr ""
 
 #: templatetags/user_sessions.py:41
 msgid "Windows 10"
@@ -191,9 +191,9 @@ msgstr ""
 
 #: templatetags/user_sessions.py:42
 msgid "Windows"
-msgstr "Windows"
+msgstr ""
 
 #: templatetags/user_sessions.py:74
 #, python-format
 msgid "%(browser)s on %(device)s"
-msgstr "%(browser)s auf %(device)s"
+msgstr "%(browser)s на %(device)s"

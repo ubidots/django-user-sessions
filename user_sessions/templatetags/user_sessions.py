@@ -15,28 +15,61 @@ BROWSERS = (
     (re.compile('Firefox'), _('Firefox')),
     (re.compile('IE'), _('Internet Explorer')),
 )
-DEVICES = (
+PLATFORMS = (
     (re.compile('Windows Mobile'), _('Windows Mobile')),
     (re.compile('Android'), _('Android')),
     (re.compile('Linux'), _('Linux')),
     (re.compile('iPhone'), _('iPhone')),
     (re.compile('iPad'), _('iPad')),
-    (re.compile('Mac OS X 10[._]9'), _('OS X Mavericks')),
-    (re.compile('Mac OS X 10[._]10'), _('OS X Yosemite')),
-    (re.compile('Mac OS X 10[._]11'), _('OS X El Capitan')),
-    (re.compile('Mac OS X 10[._]12'), _('macOS Sierra')),
-    (re.compile('Mac OS X 10[._]13'), _('macOS High Sierra')),
-    (re.compile('Mac OS X 10[._]14'), _('macOS Mojave')),
-    (re.compile('Mac OS X 10[._]15'), _('macOS Catalina')),
     (re.compile('Mac OS X'), _('macOS')),
-    (re.compile('NT 5.1'), _('Windows XP')),
-    (re.compile('NT 6.0'), _('Windows Vista')),
-    (re.compile('NT 6.1'), _('Windows 7')),
-    (re.compile('NT 6.2'), _('Windows 8')),
-    (re.compile('NT 6.3'), _('Windows 8.1')),
-    (re.compile('NT 10.0'), _('Windows 10')),
     (re.compile('Windows'), _('Windows')),
 )
+
+
+@register.filter
+def platform(value):
+    """
+    Transform the platform from a User Agent into human readable text.
+
+    Example output:
+
+    * iPhone
+    * Windows 8.1
+    * macOS
+    * Linux
+    * None
+    """
+
+    platform = None
+    for regex, name in PLATFORMS:
+        if regex.search(value):
+            platform = name
+            break
+
+    return platform
+
+
+@register.filter
+def browser(value):
+    """
+    Transform the browser from a User Agent into human readable text.
+
+    Example output:
+
+    * Safari
+    * Chrome
+    * Safari
+    * Firefox
+    * None
+    """
+
+    browser = None
+    for regex, name in BROWSERS:
+        if regex.search(value):
+            browser = name
+            break
+
+    return browser
 
 
 @register.filter
@@ -54,30 +87,37 @@ def device(value):
     * None
     """
 
-    browser = None
-    for regex, name in BROWSERS:
-        if regex.search(value):
-            browser = name
-            break
+    browser_ = browser(value)
+    platform_ = platform(value)
 
-    device = None
-    for regex, name in DEVICES:
-        if regex.search(value):
-            device = name
-            break
-
-    if browser and device:
+    if browser_ and platform_:
         return _('%(browser)s on %(device)s') % {
-            'browser': browser,
-            'device': device
+            'browser': browser_,
+            'device': platform_
         }
 
-    if browser:
-        return browser
+    if browser_:
+        return browser_
 
-    if device:
-        return device
+    if platform_:
+        return platform_
 
+    return None
+
+
+@register.filter
+def city(value):
+    location = geoip() and geoip().city(value)
+    if location and location['city']:
+        return location['city']
+    return None
+
+
+@register.filter
+def country(value):
+    location = geoip() and geoip().country(value)
+    if location and location['country_name']:
+        return location['country_name']
     return None
 
 
@@ -98,11 +138,11 @@ def location(value):
         try:
             location = geoip() and geoip().country(value)
         except Exception as e:
-            warnings.warn(str(e))
+            warnings.warn(str(e), stacklevel=2)
             location = None
     if location and location['country_name']:
         if 'city' in location and location['city']:
-            return '{}, {}'.format(location['city'], location['country_name'])
+            return f"{location['city']}, {location['country_name']}"
         return location['country_name']
     return None
 
@@ -118,5 +158,5 @@ def geoip():
             try:
                 _geoip = GeoIP2()
             except Exception as e:
-                warnings.warn(str(e))
+                warnings.warn(str(e), stacklevel=2)
     return _geoip

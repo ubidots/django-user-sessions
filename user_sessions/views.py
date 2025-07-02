@@ -5,21 +5,21 @@ from django.shortcuts import redirect, resolve_url
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.timezone import now
-from django.views.generic import DeleteView, ListView, View
+from django.views.generic import ListView, View
+from django.views.generic.detail import BaseDetailView
 from django.views.generic.edit import DeletionMixin
 
 
-class SessionMixin(object):
+class SessionMixin:
     def get_queryset(self):
         return self.request.user.session_set\
             .filter(expire_date__gt=now()).order_by('-last_activity')
 
 
-class LoginRequiredMixin(object):
+class LoginRequiredMixin:
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(request, *args,
-                                                        **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class SessionListView(LoginRequiredMixin, SessionMixin, ListView):
@@ -32,10 +32,10 @@ class SessionListView(LoginRequiredMixin, SessionMixin, ListView):
     """
     def get_context_data(self, **kwargs):
         kwargs['session_key'] = self.request.session.session_key
-        return super(SessionListView, self).get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
 
-class SessionDeleteView(LoginRequiredMixin, SessionMixin, DeleteView):
+class SessionDeleteView(LoginRequiredMixin, SessionMixin, DeletionMixin, BaseDetailView):
     """
     View for deleting a user's own session.
 
@@ -48,13 +48,6 @@ class SessionDeleteView(LoginRequiredMixin, SessionMixin, DeleteView):
             next_page = getattr(settings, 'LOGOUT_REDIRECT_URL', '/')
             return redirect(resolve_url(next_page))
         return super().delete(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        if self.kwargs['pk'] == self.request.session.session_key:
-            logout(self.request)
-            next_page = getattr(settings, 'LOGOUT_REDIRECT_URL', '/')
-            return redirect(resolve_url(next_page))
-        return super().form_valid(form)
 
     def get_success_url(self):
         return str(reverse_lazy('user_sessions:session_list'))
@@ -69,7 +62,7 @@ class SessionDeleteOtherView(LoginRequiredMixin, SessionMixin, DeletionMixin, Vi
     place.
     """
     def get_object(self):
-        return super(SessionDeleteOtherView, self).get_queryset().\
+        return super().get_queryset().\
             exclude(session_key=self.request.session.session_key)
 
     def get_success_url(self):
