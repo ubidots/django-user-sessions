@@ -30,12 +30,10 @@ forking the repository and sending some pull requests. The package is
 translated into English, Dutch and other languages. Please contribute your own
 language using Transifex_.
 
-Also, have a look at the online `example app`_, hosted by Heroku_. It also
-contains the package `django-two-factor-auth`_, but that application is not a
-dependency for this package. Also have a look at the bundled example templates
-and views to see how you can integrate the application into your project.
+Also have a look at the bundled example templates and views to see how you
+can integrate the application into your project.
 
-Compatible with Django 2.2, 3.0 and 3.1 on Python 3.6, 3.7, 3.8 and 3.9.
+Compatible with Django 3.2 and 4.0 on Python 3.7, 3.8, 3.9 and 3.10.
 Documentation is available at `readthedocs.org`_.
 
 
@@ -77,7 +75,7 @@ documentation on `installing GeoIP`_.
 Getting help
 ============
 
-For general questions regarding this package, please hop over to Stack 
+For general questions regarding this package, please hop over to Stack
 Overflow. If you think there is an issue with this package; check if the
 issue is already listed (either open or closed), and file an issue if
 it's not.
@@ -151,9 +149,6 @@ This library was written by `Bouke Haarsma`_ and contributors_.
 .. _`readthedocs.org`: https://django-user-sessions.readthedocs.org/
 .. _`installation instructions`:
    https://django-user-sessions.readthedocs.io/en/stable/installation.html
-.. _`example app`: https://example-two-factor-auth.herokuapp.com
-.. _Heroku: https://www.heroku.com
-.. _`django-two-factor-auth`: https://github.com/Bouke/django-two-factor-auth
 .. _installing GeoIP:
    https://docs.djangoproject.com/en/2.0/ref/contrib/gis/geoip2/
 .. _tox: https://testrun.org/tox/latest/
