@@ -35,3 +35,18 @@ tx-pull:
 tx-push:
 	cd user_sessions; django-admin.py makemessages -l en
 	tx push -s
+
+
+install:
+	python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade build
+    python3 -m pip install --upgrade twine
+
+build:
+	python3 -m build
+
+code_artifact_login:
+	./twine_aws_login.sh
+
+publish: build code_artifact_login
+	python3 -m twine upload --repository codeartifact dist/*
