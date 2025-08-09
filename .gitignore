@@ -16,4 +16,4 @@ __pycache__
 /venv/
 /.eggs/
 /build/
-dist/
+/dist/
